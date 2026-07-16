@@ -48,8 +48,8 @@ function initBunnyPlayerBackground() {
     if (typeof video.disableRemotePlayback !== 'undefined') video.disableRemotePlayback = true;
     if (autoplay) video.autoplay = false;
 
-    var isSafariNative = !!video.canPlayType('application/vnd.apple.mpegurl');
-    var canUseHlsJs = !!(window.Hls && Hls.isSupported()) && !isSafariNative;
+    var canUseHlsJs = !!(window.Hls && Hls.isSupported());
+    var isSafariNative = !canUseHlsJs && !!video.canPlayType('application/vnd.apple.mpegurl');
 
     // Attach media only once (for actual playback)
     var isAttached = false;
